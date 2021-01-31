@@ -87,3 +87,5 @@ function Manage-Remote {
         Write-Host "CANNOT COPY FILES FOR WEBSITE"
         Break;
     }
+}
+Manage-Remote
