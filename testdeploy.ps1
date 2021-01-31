@@ -29,7 +29,7 @@ function Manage-Remote {
 <#CREATING & ENTERING PS SESSION#>
 
 
-    #Set-Item WSMan:localhost\client\trustedhosts -value *
+    Set-Item WSMan:localhost\client\trustedhosts *
     $Session = New-PSSession -ComputerName $Computer_Name -Credential $User_Name -ErrorAction stop
     Write-Host "SUCCESSFULLY CREATED SESSION"
    
