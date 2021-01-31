@@ -28,10 +28,15 @@ function Manage-Remote {
 #####################################################################################################
 <#CREATING & ENTERING PS SESSION#>
 
-
-    Set-Item WSMan:localhost\client\trustedhosts *
-    $Session = New-PSSession -ComputerName $Computer_Name -Credential $User_Name -ErrorAction stop
-    Write-Host "SUCCESSFULLY CREATED SESSION"
+    try{
+        $password = ConvertTo-SecureString 'BlueBug0811' -AsPlainText -Force
+        $credential = New-Object System.Management.Automation.PSCredential ('INTIMETEC\Administrator', $password)
+        $session = New-PSSession -ComputerName "172.27.125.150" -Credential $credential -ErrorAction stop
+        write-host "Created Session"
+        }
+    catch{
+         write-host "Cannot Create Session"
+    }
    
     
     Invoke-Command -Session $Session -ScriptBlock {
