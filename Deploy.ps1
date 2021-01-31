@@ -93,9 +93,11 @@ function Manage-Remote {
         param($Web_Name,$Port)
         Set-ExecutionPolicy Unrestricted -Force
         Import-Module IISAdministration
+        <#UNZIPPING CONTENTS FOR WEBSITEE#>
+        Expand-Archive -Path "C:\$Web_Name\netcoreapp3.1.zip" -DestinationPath "C:\$Web_Name"
         <#HOSTING AND STARTING WEBSITEE#>
         try {
-            New-IISSite -Name "$Web_Name" -PhysicalPath "C:\$Web_Name" -BindingInformation "*: $Port :"
+            New-IISSite -Name "$Web_Name" -PhysicalPath "C:\$Web_Name\netcoreapp3.1" -BindingInformation "*: $Port :"
             Start-IISSite -Name "$Web_Name"
             Write-Host "STARTED HOSTING WEBSITE"
         }
