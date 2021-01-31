@@ -28,15 +28,11 @@ function Manage-Remote {
 #####################################################################################################
 <#CREATING & ENTERING PS SESSION#>
 
-    try {
-        Set-Item WSMan:localhost\client\trustedhosts -value *
-        $Session = New-PSSession -ComputerName $Computer_Name -Credential $User_Name -ErrorAction stop
-        Write-Host "SUCCESSFULLY CREATED SESSION"
-    }
-    catch {
-        Write-Host "UNABLE TO CREATE A SESSION. PLEASE VERIFY THE INPUTS AND TRY AGAIN"
-        Break;
-    }
+
+    Set-Item WSMan:localhost\client\trustedhosts -value *
+    $Session = New-PSSession -ComputerName $Computer_Name -Credential $User_Name -ErrorAction stop
+    Write-Host "SUCCESSFULLY CREATED SESSION"
+   
     
     Invoke-Command -Session $Session -ScriptBlock {
         <#ENABLING IIS SERVER#>
