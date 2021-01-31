@@ -81,7 +81,7 @@ function Manage-Remote {
     } -Args $Website_Name
  <#COPYING FILES FOR WEBSITE#>
     try {
-        Copy-Item -path "WebContent\netcoreapp3.1.zip" -Destination "C:\$Web_Name" -ToSession $Session 
+        Copy-Item -path "WebContent\netcoreapp3.1.zip" -Destination "C:\$Website_Name" -ToSession $Session 
         Write-Host "FILES COPIED FOR WEBSITE"
     }
     catch {
