@@ -3,7 +3,7 @@ param (
         mandatory = $false
         )
     ]
-    [string]$Computer_Name = "172.27.125.150",
+    [string]$Computer_Name = "172.28.179.2",
     
     [parameter (
         mandatory = $false
@@ -98,7 +98,7 @@ function Manage-Remote {
         <#HOSTING AND STARTING WEBSITEE#>
         try {
             New-IISSite -Name "$Web_Name" -PhysicalPath "C:\$Web_Name\netcoreapp3.1" -BindingInformation "*: $Port :"
-            #Start-IISSite -Name "$Web_Name"
+            Start-IISSite -Name "$Web_Name"
             Write-Host "STARTED HOSTING WEBSITE"
         }
         catch {
